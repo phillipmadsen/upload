@@ -13,9 +13,15 @@ use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
  *
  * @author Phillip Madsen <contact@affordableprogrammer.com>
  */
-class User extends EloquentUser implements HasMedia, HasMediaConversions
+class User extends EloquentUser implements HasMedia
 {
-	use HasMediaTrait;
+    use HasMediaTrait;
+
+	public $imageProfiles = [
+        'small'  => ['w' => '150', 'h' => '150', 'filt' => 'greyscale', 'shouldBeQueued' => false],
+        'medium' => ['w' => '450', 'h' => '450'],
+        'large'  => ['w' => '750', 'h' => '750' , 'shouldBeQueued' => true],
+    ];
 
 
 
@@ -43,13 +49,13 @@ class User extends EloquentUser implements HasMedia, HasMediaConversions
     }
 
 
-	public static function edit($user_id, /*$name, $surname, $username,*/ $email, $first_name, $last_name)
+	public static function edit($user_id, $name, $surname, $username, $email, $first_name, $last_name)
     {
         $user = static::find($user_id);
         $user->first_name = $first_name;
         $user->last_name = $last_name;
-        // $user->surname = $surname;
-        // $user->username = $username;
+        $user->surname = $surname;
+        $user->username = $username;
         $user->email = $email;
         return $user;
     }

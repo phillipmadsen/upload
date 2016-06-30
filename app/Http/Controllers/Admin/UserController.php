@@ -39,6 +39,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::lists('name', 'id');
+        $userPic = User::find(1);
 
         return view('backend.user.create', compact('roles'));
     }
@@ -88,9 +89,9 @@ class UserController extends Controller
             }
         }
 
-        $usersItem = User::find(1);
+        $usersPic = User::find(1);
 		//$usersItem->addMedia($pathToFile)->toMediaLibrary();
-		$usersItem->addMedia($pathToFile)->preservingOriginal()->toMediaLibrary();
+		$usersPic->addMedia($pathToFile)->preservingOriginal()->toMediaLibrary();
 
 
 		// $images = $product->getMedia('product-images');

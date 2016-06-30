@@ -157,6 +157,11 @@ return [
 		Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 		Sseffa\VideoApi\VideoApiServiceProvider::class,
 		Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
+		Spatie\DirectoryCleanup\DirectoryCleanupServiceProvider::class,
+		//Spatie\Activitylog\ActivitylogServiceProvider::class,
+		Spatie\Analytics\AnalyticsServiceProvider::class,
+		Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+
 
 	],
 	/*
@@ -218,7 +223,9 @@ return [
 		'VideoApi'            => Sseffa\VideoApi\Facades\VideoApi::class,
 		'Feeder'              => Fully\Feeder\Facade\Feeder::class,
 		'Search'              => Fully\Search\Facade\Search::class,
-		'Flash'               => Laracasts\Flash\Flash::class
+		'Flash'               => Laracasts\Flash\Flash::class,
+		'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+		'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
 
 	],
 
