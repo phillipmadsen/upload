@@ -1,0 +1,479 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": ".env",
+			"settings":
+			{
+				"buffer_size": 301,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "{\n    \"name\": \"laravel/laravel\",\n    \"description\": \"The Laravel Framework.\",\n    \"keywords\": [\"framework\", \"laravel\"],\n    \"license\": \"MIT\",\n    \"type\": \"project\",\n    \"require\": {\n        \"php\": \">=5.5.9\",\n        \"laravel/framework\": \"5.1.*\",\n        \"laravelcollective/html\": \"5.1.*\",\n        \"cartalyst/sentinel\": \"2.0.*\",\n        \"mcamara/laravel-localization\": \"1.0.*\",\n        \"barryvdh/laravel-debugbar\": \"2.2.*\",\n        \"davejamesmiller/laravel-breadcrumbs\": \"3.0.*\",\n        \"sseffa/video-api\": \"2.0.*\",\n        \"laracasts/flash\": \"^1.3\",\n        \"rap2hpoutre/laravel-log-viewer\": \"^0.5.3\",\n\n        \"intervention/image\": \"^2.3\",\n        \"spatie/laravel-medialibrary\": \"^4.3\",\n        \"barryvdh/laravel-ide-helper\": \"^2.2\"\n    },\n    \"require-dev\": {\n        \"fzaninotto/faker\": \"~1.4\",\n        \"mockery/mockery\": \"0.9.*\",\n        \"phpunit/phpunit\": \"~4.0\",\n        \"phpspec/phpspec\": \"~2.1\"\n    },\n    \"autoload\": {\n        \"classmap\": [\n            \"database\"\n        ],\n        \"psr-4\": {\n            \"Fully\\\\\": \"app/\"\n        },\n        \"files\": [\n            \"app/Helper/helpers.php\"\n        ]\n    },\n    \"autoload-dev\": {\n        \"classmap\": [\n            \"tests/TestCase.php\"\n        ]\n    },\n    \"scripts\": {\n        \"post-root-package-install\": [\n            \"php -r \\\"copy('.env.example', '.env');\\\"\"\n        ],\n        \"post-create-project-cmd\": [\n            \"php artisan key:generate\"\n        ],\n        \"post-install-cmd\": [\n            \"php artisan clear-compiled\",\n            \"php artisan optimize\"\n        ],\n        \"post-update-cmd\": [\n            \"php artisan clear-compiled\",\n            \"php artisan optimize\"\n        ]\n    },\n    \"config\": {\n        \"preferred-install\": \"dist\"\n    }\n}\n",
+			"file": "composer.json",
+			"file_size": 1730,
+			"file_write_time": 131117766044289732,
+			"settings":
+			{
+				"buffer_size": 1722,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 342.0,
+		"last_filter": "scope",
+		"selected_items":
+		[
+			[
+				"scope",
+				"Scope Hunter: Toggle Instant Scoper"
+			],
+			[
+				"tog",
+				"Toggle ScopeAlways"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"format",
+				"CodeFormatter: Format Code"
+			],
+			[
+				"markd",
+				"MarkdownTOC:Insert TOC"
+			],
+			[
+				"foramt",
+				"CodeFormatter: Format Code"
+			],
+			[
+				"markdown",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"PHPLOC: ",
+				"PHP Class browser: (Re)Create Database"
+			],
+			[
+				"toggle sc",
+				"Toggle ScopeAlways"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"logg",
+				"Logging: Enable logging"
+			],
+			[
+				"toggle",
+				"SublimeLog: Toggle logger (on/off)"
+			],
+			[
+				"logging",
+				"Logging: Enable logging"
+			],
+			[
+				"new",
+				"Tasks: New document"
+			],
+			[
+				"orgmo",
+				"Preferences: orgmode Settings – Default"
+			],
+			[
+				"tree",
+				"ProjectTreeTemplater: Run"
+			]
+		],
+		"width": 886.0
+	},
+	"console":
+	{
+		"height": 153.0,
+		"history":
+		[
+			"sublime.log_commands(True)",
+			"sublime.log_input(True)",
+			"sublime.log_commands(True)",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/G/A_LOCAL/bbb/upload"
+	],
+	"file_history":
+	[
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/G/A_LOCAL/bbb/uploadmanager/app/Http/Controllers/admin/UploadController.php",
+		"/G/A_LOCAL/bbb/staged.grace/composer.json",
+		"/G/A_LOCAL/bbb/staged.grace/app/Http/new_routes.php",
+		"/G/A_LOCAL/bbb/uploadmanager/app/Http/routes.php",
+		"/G/Desktop/TEMPLATES/temprar/Rar$DRa0.706/Laravel Blade Highlighter/Comments.tmPreferences",
+		"/G/Desktop/TEMPLATES/temprar/Rar$DRa0.561/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/Comments.tmPreferences",
+		"/G/A_LOCAL/bbb/uploadmanager/resources/views/admin/upload/index.balde.php",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/LegalMarkdown.sublime-settings",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/Legal Markdown/LegalMarkdown.sublime-settings",
+		"/G/Desktop/TEMPLATES/temprar/Rar$DRa0.583/Laravel Blade Highlighter/Comments.tmPreferences.cache",
+		"/G/A_LOCAL/bbb/uploadmanager/resources/views/admin/upload",
+		"/G/A_LOCAL/bbb/uploadmanager/resources/views/admin/upload/_modals.blade.php",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/PHP Completions Kit/README.md",
+		"/G/A_LOCAL/bbb/easysite/config/markdown.php",
+		"/G/A_LOCAL/bbb/easysite/composer.json",
+		"/G/A_LOCAL/bbb/uploadmanager/config/app.php",
+		"/G/A_LOCAL/bbb/easysite/config/app.php",
+		"/G/A_LOCAL/bbb/easysite/resources/views/admin/upload/_modals.blade.php",
+		"/G/A_LOCAL/bbb/uploadmanager/app/Services/UploadsManager.php",
+		"/G/A_LOCAL/bbb/uploadmanager/app/User.php",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
+		"/G/A_LOCAL/bbb/uploadmanager/uploadmanager.sublime-project",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/Markdown Preview/MarkdownPreview.sublime-settings",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/MarkdownTOC/MarkdownTOC.sublime-settings",
+		"/C/Users/sandbox/helloworld.js",
+		"/C/Users/sandbox/sudo.sh",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/ClassName.sublime-settings",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/Xdebug Client/Xdebug.sublime-settings",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/ScopeAlways/ScopeAlways.sublime-settings",
+		"/G/[My]/Placeholders/PlaceholderRed.sublime-snippet",
+		"/G/Desktop/GitHubLog.txt",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/ClassName/ClassName.sublime-settings",
+		"/G/A_LOCAL/bbb/uploadmanager/config/main.php",
+		"/G/A_LOCAL/bbb/uploadmanager/composer.json",
+		"/G/A_LOCAL/bbb/uploadmanager/app/helpers.php",
+		"/G/A_LOCAL/bbb/uploadmanager/config/filesystems.php",
+		"/G/[dropzone]/dropzone-laravel-image-upload/app/Http/routes.php",
+		"/G/A_LOCAL/bbb/easysite/app/Http/routes.php",
+		"/G/A_LOCAL/bbb/easysite/database/seeds/DatabaseSeeder.php",
+		"/G/A_LOCAL/bbb/easysite/database/seeds/PostTableSeeder.php",
+		"/G/A_LOCAL/bbb/easysite/database/seeds/TagTableSeeder.php",
+		"/G/A_LOCAL/bbb/easysite/database/factories/ModelFactory.php",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/G/A_LOCAL/bbb/easysite/.gitignore",
+		"/G/A_LOCAL/bbb/easysite/.env",
+		"/G/A_LOCAL/bbb/easysite/readme.md",
+		"/G/[dropzone]/dropzone-laravel-image-upload/app/Product.php",
+		"/G/[dropzone]/dropzone-laravel-image-upload/app/Models/Image.php",
+		"/G/[dropzone]/dropzone-laravel-image-upload/app/Http/Controllers/testProductController.php",
+		"/G/[My]/projspec/new tables.txt",
+		"/G/[dropzone]/dropzone-laravel-image-upload/public/assets/js/drop.js",
+		"/G/[dropzone]/dropzone-laravel-image-upload/app/Http/Controllers/ImageController.php",
+		"/G/[dropzone]/dropzone-laravel-image-upload/resources/views/pages/upload.blade.php",
+		"/G/[dropzone]/dropzone-laravel-image-upload/resources/views/product/create.blade.php",
+		"/G/[My]/projspec/ImageRepository.php",
+		"/G/Desktop/laravel_relationships-master/app/Models/Article.php",
+		"/G/Desktop/laravel_relationships-master/app/Models/User.php",
+		"/G/[dropzone]/dropzone-laravel-image-upload/app/Http/Controllers/ProductController.php",
+		"/C/Users/sandbox/.homestead/Homestead.yaml",
+		"/G/[dropzone]/dropzone-laravel-image-upload/public/assets/js/dropzone-config.js",
+		"/G/[dropzone]/dropzone-laravel-image-upload/public/assets/js/dropzone-config-2.js",
+		"/G/Desktop/laravel_relationships-master/app/Http/Controllers/UserController.php",
+		"/G/[dropzone]/dropzone-laravel-image-upload/public/assets/js/another.js",
+		"/G/[dropzone]/dropzone-laravel-image-upload/.env",
+		"/G/[My]/projspec/Image.php",
+		"/G/[dropzone]/dropzone-laravel-image-upload/public/packages/dropzone/min/dropzone-amd-module.min.js",
+		"/G/[dropzone]/dropzone-laravel-image-upload/vendor/symfony/console/Input/Input.php",
+		"/G/[dropzone]/dropzone-laravel-image-upload/vendor/laravel/framework/src/Illuminate/Support/Facades/Input.php",
+		"/G/Desktop/laravel_relationships-master/app/Http/Controllers/ArticleController.php",
+		"/G/Desktop/laravel_relationships-master/app/Http/Controllers/HomeController.php",
+		"/G/Desktop/laravel_relationships-master/app/Http/Controllers/Controller.php",
+		"/G/Desktop/laravel_relationships-master/database/migrations/2016_02_06_095135_create_articles_table.php",
+		"/G/[dropzone]/dropzone-laravel-image-upload/database/migrations/2016_06_28_235452_add_to_images.php",
+		"/G/[dropzone]/dropzone-laravel-image-upload/composer.json",
+		"/G/A_LOCAL/bbb/staged.grace/app/Http/Controllers/drop.sublime-project",
+		"/G/A_LOCAL/bbb/staged.grace/app/Http/Controllers/ApplyController.php",
+		"/G/A_LOCAL/bbb/staged.grace/resources/views/upload.blade.php",
+		"/G/A_LOCAL/bbb/staged.grace/app/Http/routes.php",
+		"/G/A_LOCAL/bbb/staged.grace/app/Http/Controllers/ProductController.php",
+		"/G/[affordable]/[code]/[Content]/[WEBCONTENTBROKER]/Gracie Machine Quilting Frames.html",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/staged-grace.sublime-project",
+		"/G/A_LOCAL/bbb/staged.grace/docs/sublime.log",
+		"/G/A_LOCAL/bbb/staged.grace/database/migrations/2016_06_12_195301_create_grace_image_paths_table.php",
+		"/G/A_LOCAL/bbb/staged.grace/2016_06_27_141712_add_to.php",
+		"/G/A_LOCAL/bbb/staged.grace/storage/logs/laravel-2016-06-28.log",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/phpcs.sublime-settings",
+		"/G/A_LOCAL/bbb/staged.grace/database/migrations/2016_06_21_221520_create_product_features_table.php",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/PHPTools.sublime-settings",
+		"/G/A_LOCAL/bbb/staged.grace/database/migrations/2016_06_21_221520_create_product_features_table.php;",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/PHPTools/PHPTools.sublime-settings",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/Phpcs/phpcs.sublime-settings",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/AutoBackups (Windows).sublime-settings",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/sublime_logging_control/logging_control.sublime-settings",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/SublimeLog/SublimeLog.sublime-settings",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLog.sublime-settings",
+		"/G/A_LOCAL/bbb/staged.grace/docs/STAGED.TODO",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/PlainTasks.sublime-settings",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/PlainTasks (Windows).sublime-settings",
+		"/G/A_LOCAL/bbb/staged.grace/quilting seo stuff.html",
+		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/orgmode/orgmode.sublime-settings",
+		"/G/Desktop/markdowntest.md",
+		"/G/A_LOCAL/bbb/staged.grace/testbuilder.php",
+		"/G/A_LOCAL/bbb/staged.grace/staged-grace.stprj"
+	],
+	"find":
+	{
+		"height": 21.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"App",
+			"admin/",
+			"-noprofile",
+			"powershell",
+			"upload",
+			"drop",
+			"picture",
+			"forceFallback",
+			"article",
+			"Article",
+			"article",
+			"Article",
+			"article",
+			"dropColumn",
+			"integer",
+			"homestead",
+			"staged.grace",
+			"- map: staged.grace",
+			"\\\\",
+			"strong",
+			"@started(16-06-28 12:37)",
+			"”",
+			"“"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": ".env",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 301,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								186,
+								186
+							]
+						],
+						"settings":
+						{
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "composer.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1722,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								642,
+								642
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 20.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.loghighlight":
+	{
+		"height": 452.0
+	},
+	"output.scopehunter.results":
+	{
+		"height": 80.0
+	},
+	"pinned_build_system": "Packages/User/PHP.sublime-build",
+	"project": "upload.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"xdebug":
+		{
+			"hide_conflict": false
+		}
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 327.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

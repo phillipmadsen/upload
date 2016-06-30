@@ -1,0 +1,18 @@
+{
+    "folders": [{
+        "path": "G:\\A_LOCAL\\bbb\\upload"
+    }],
+    "path_mapping": {
+        "/home/vagrant/bbb/upload": "G:/A_LOCAL/bbb/uplaod"
+    },
+    "url": "http://upload/",
+    "color_scheme": "Packages/Theme - Windows 10/Widget - Windows 10.tmTheme",
+    "exclude_git_folder": true,
+    "exclude_hidden_files": true,
+    "exclude_hidden_folders": true,
+    "indent_with_tabs": true,
+        "font_face": "impact",
+    "font_options": ["subpixel_antialias"],
+    "font_size": 12,
+     "ignore_sublime_settings": true,
+}
