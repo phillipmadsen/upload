@@ -2,17 +2,33 @@
 
 namespace Fully\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Fully\Interfaces\ModelInterface as ModelInterface;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+
 
 /**
  * Class News.
  *
- * @author Sefa Karagöz <karagozsefa@gmail.com>
+ * @author Phillip Madsen <contact@affordableprogrammer.com>
  */
-class News extends BaseModel implements ModelInterface, SluggableInterface
+class News extends BaseModel implements ModelInterface, SluggableInterface, HasMediaConversions
 {
+    use HasMediaTrait;
+
+    public function registerMediaConversions()
+    {
+        $this->addMediaConversion('thumb')
+             ->setManipulations(['w' => 368, 'h' => 232])
+             ->performOnCollections('images');
+    }
+
+    // $newsItem = News::find(1);
+	// $newsItem->addMedia($pathToFile)->toCollection('images');
+
     use SluggableTrait;
 
     public $table = 'news';
@@ -33,4 +49,6 @@ class News extends BaseModel implements ModelInterface, SluggableInterface
     {
         return getLang().'/news/'.$this->attributes['slug'];
     }
+
+
 }

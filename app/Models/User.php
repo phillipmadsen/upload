@@ -5,6 +5,7 @@ namespace Fully\Models;
 use Illuminate\Database\Eloquent\Model;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
 /**
@@ -12,9 +13,19 @@ use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
  *
  * @author Phillip Madsen <contact@affordableprogrammer.com>
  */
-class User extends EloquentUser implements HasMedia
+class User extends EloquentUser implements HasMedia, HasMediaConversions
 {
 	use HasMediaTrait;
+
+
+
+ 	public function registerMediaConversions()
+    {
+        $this->addMediaConversion('thumb')
+             ->setManipulations(['w' => 368, 'h' => 232])
+             ->performOnCollections('images');
+    }
+
 
 
 
@@ -42,5 +53,7 @@ class User extends EloquentUser implements HasMedia
         $user->email = $email;
         return $user;
     }
+
+
 
 }
