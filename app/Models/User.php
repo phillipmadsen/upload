@@ -8,6 +8,8 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
+
+
 /**
  * Class User.
  *
@@ -15,50 +17,50 @@ use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
  */
 class User extends EloquentUser implements HasMedia
 {
-    use HasMediaTrait;
+	use HasMediaTrait;
 
-	public $imageProfiles = [
-        'small'  => ['w' => '150', 'h' => '150', 'filt' => 'greyscale', 'shouldBeQueued' => false],
-        'medium' => ['w' => '450', 'h' => '450'],
-        'large'  => ['w' => '750', 'h' => '750' , 'shouldBeQueued' => true],
-    ];
+	// public $imageProfiles = [
+ //        'small'  => ['w' => '150', 'h' => '150', 'filt' => 'greyscale', 'shouldBeQueued' => false],
+ //        'medium' => ['w' => '450', 'h' => '450'],
+ //        'large'  => ['w' => '750', 'h' => '750' , 'shouldBeQueued' => true],
+ //    ];
 
 
 
- 	public function registerMediaConversions()
-    {
-        $this->addMediaConversion('thumb')
-             ->setManipulations(['w' => 368, 'h' => 232])
-             ->performOnCollections('images');
-    }
+	public function registerMediaConversions()
+	{
+		$this->addMediaConversion('thumb')
+			 ->setManipulations(['w' => 368, 'h' => 232])
+			 ->performOnCollections('images');
+	}
 
 
 
 
 	public function articles()
-    {
-        return $this->hasMany(\Fully\Models\Article::class, 'user_id')->where('status_id', 3)->orderBy('created_at', 'DESC');
-    }
-    public function all_articles()
-    {
-        return $this->hasMany(\Fully\Models\Article::class, 'user_id')->orderBy('created_at', 'DESC');
-    }
-    public function latest_articles()
-    {
-        return $this->hasMany(\Fully\Models\Article::class, 'user_id')->where('status_id', 3)->orderBy('created_at', 'DESC')->take(5);
-    }
+	{
+		return $this->hasMany(\Fully\Models\Article::class, 'user_id')->where('status_id', 3)->orderBy('created_at', 'DESC');
+	}
+	public function all_articles()
+	{
+		return $this->hasMany(\Fully\Models\Article::class, 'user_id')->orderBy('created_at', 'DESC');
+	}
+	public function latest_articles()
+	{
+		return $this->hasMany(\Fully\Models\Article::class, 'user_id')->where('status_id', 3)->orderBy('created_at', 'DESC')->take(5);
+	}
 
 
 	public static function edit($user_id, $name, $surname, $username, $email, $first_name, $last_name)
-    {
-        $user = static::find($user_id);
-        $user->first_name = $first_name;
-        $user->last_name = $last_name;
-        $user->surname = $surname;
-        $user->username = $username;
-        $user->email = $email;
-        return $user;
-    }
+	{
+		$user = static::find($user_id);
+		$user->first_name = $first_name;
+		$user->last_name = $last_name;
+		$user->surname = $surname;
+		$user->username = $username;
+		$user->email = $email;
+		return $user;
+	}
 
 
 

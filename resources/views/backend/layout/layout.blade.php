@@ -62,7 +62,7 @@
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
-        <a href="{!! url(getLang() . '/admin') !!}" class="logo"><b>fully</b>cms</a>
+        <a href="{!! url(getLang() . '/admin') !!}" class="logo"><b>GRACE</b>admin</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
