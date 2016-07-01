@@ -19,7 +19,7 @@
     <link href="{!! url('backend/plugins/daterangepicker/daterangepicker-bs3.css') !!}" rel="stylesheet" type="text/css"/>
     <!-- Theme style -->
     <link href="{!! url('backend/css/AdminLTE.min.css') !!}" rel="stylesheet" type="text/css"/>
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css">
     <link href="{!! url('backend/css/style.css') !!}" rel="stylesheet" type="text/css"/>
 
     <!-- jQuery 2.1.3 -->
@@ -48,6 +48,7 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <!-- AdminLTE for demo purposes -->
     <script src="{!! url('backend/js/demo.js') !!}" type="text/javascript"></script>
+
 
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
@@ -163,6 +164,6 @@
     @include('backend/layout/footer')
 </div>
 <!-- ./wrapper -->
-
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
 </body>
 </html>

@@ -81,21 +81,3 @@ function langRedirectRoute($route)
 }
 
 
-
- /**
-     * Find a model by slug.
-     *
-     * @param $slug
-     * @return Model|null.
-     */
-    public static function findBySlug($slug)
-    {
-        return self::whereSlug($slug)->first();
-    }
-
-
-    // protected $sluggable = [
-    //     'build_from' => 'username',
-    //     'save_to'    => 'slug',
-    //     'on_update'  => true,
-    // ];

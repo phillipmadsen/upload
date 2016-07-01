@@ -1,0 +1,105 @@
+
+
+
+
+<?php
+
+namespace Fully\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Cartalyst\Sentinel\Users\EloquentUser;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
+
+
+
+
+/**
+ * Class User.
+ *
+ * @author Phillip Madsen <contact@affordableprogrammer.com>
+ */
+class User extends EloquentUser implements HasMedia
+{
+	use HasMediaTrait, sluggable;
+
+	// public $imageProfiles = [
+ //        'small'  => ['w' => '150', 'h' => '150', 'filt' => 'greyscale', 'shouldBeQueued' => false],
+ //        'medium' => ['w' => '450', 'h' => '450'],
+ //        'large'  => ['w' => '750', 'h' => '750' , 'shouldBeQueued' => true],
+ //    ];
+
+  protected $sluggable = [
+        'build_from' => 'username',
+        'save_to'    => 'slug',
+        'on_update'  => true,
+    ];
+
+ UsersController@postProfilePic
+
+ public function registerMediaConversions()
+    {
+        $this->addMediaConversion('thumb')
+             ->setManipulations(['w' => 368, 'h' => 232])
+             ->performOnCollections('avatars');
+
+        $this->addMediaConversion('medium')
+            ->setManipulations(['w' => 600, 'h' => 400])
+            ->performOnCollections('avatars');
+
+        $this->addMediaConversion('large')
+             ->setManipulations(['w' => 1000, 'h' => 700])
+             ->performOnCollections('avatars');
+    }
+
+
+public function avatarUpload(Request $request, $slug)
+{
+	$user = User::findBySlug($slug);
+	$user->clearMediaCollection('avatars');
+	$user->addMedia($request->file('file'))->toCollectionOnDisk('avatars','avatars');
+}
+
+	public function articles()
+	{
+		return $this->hasMany(\Fully\Models\Article::class, 'user_id')->where('status_id', 3)->orderBy('created_at', 'DESC');
+	}
+	public function all_articles()
+	{
+		return $this->hasMany(\Fully\Models\Article::class, 'user_id')->orderBy('created_at', 'DESC');
+	}
+	public function latest_articles()
+	{
+		return $this->hasMany(\Fully\Models\Article::class, 'user_id')->where('status_id', 3)->orderBy('created_at', 'DESC')->take(5);
+	}
+
+
+	public static function edit($user_id, $name, $surname, $username, $email, $first_name, $last_name)
+	{
+		$user = static::find($user_id);
+		$user->first_name = $first_name;
+		$user->last_name = $last_name;
+		$user->surname = $surname;
+		$user->username = $username;
+		$user->email = $email;
+		return $user;
+	}
+
+
+
+    public function registerMediaConversions()
+    {
+        $this->addMediaConversion('thumb')
+            ->setManipulations(['w' => 60, 'h' => 60])
+            ->performOnCollections('avatars');
+
+        $this->addMediaConversion('medium')
+            ->setManipulations(['w' => 350, 'h' => 250, 'fit' => 'crop'])
+            ->performOnCollections('avatars');
+    }
+
+
+}
