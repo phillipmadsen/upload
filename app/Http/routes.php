@@ -1,5 +1,18 @@
 <?php
 
+Route::get('update', function () {
+
+
+exec('@composer update', $out, $status);
+if (0 === $status) {
+    var_dump($out);
+} else {
+    echo "composer update Command failed with status: $status";
+}
+// exec('');
+//shell_exec('composer update');
+   // return '<pre>' . var_dump($out) . '</pre>';
+});
 /**
  * Simple Routes output for quick access and reference
  * @author Phillip Madsen <contact@affordableprogrammer.com>
@@ -31,6 +44,16 @@ Route::get('/r', function ()
     return philsroutes();
 });
 
+	// echo "<pre>".shell_exec('ls -lart')."</pre>";
+// Route::get('ls', function(){
+// 	$output = shell_exec('ls -lart');
+// 	return "<pre>".$output."</pre>";
+
+//     $process = new Process('./composer.phar dump-autoload -o', $cwd);
+//     $process->start();
+
+
+// })
 
 /*
 |--------------------------------------------------------------------------

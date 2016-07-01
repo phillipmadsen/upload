@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"getClient",
+				"getClientOriginalName〔function〕"
+			],
+			[
 				"first",
 				"first-name\t(UserController.php)"
 			]
@@ -12,37 +16,42 @@
 	"buffers":
 	[
 		{
-			"contents": "<?php\n\nnamespace Fully\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Model;\nuse Cartalyst\\Sentinel\\Users\\EloquentUser;\nuse Spatie\\MediaLibrary\\HasMedia\\HasMediaTrait;\nuse Spatie\\MediaLibrary\\HasMedia\\Interfaces\\HasMediaConversions;\nuse Spatie\\MediaLibrary\\HasMedia\\Interfaces\\HasMedia;\n\n/**\n * Class User.\n *\n * @author Phillip Madsen <contact@affordableprogrammer.com>\n */\nclass User extends EloquentUser implements HasMedia\n{\n    use HasMediaTrait;\n\n\tpublic $imageProfiles = [\n        'small'  => ['w' => '150', 'h' => '150', 'filt' => 'greyscale', 'shouldBeQueued' => false],\n        'medium' => ['w' => '450', 'h' => '450'],\n        'large'  => ['w' => '750', 'h' => '750' , 'shouldBeQueued' => true],\n    ];\n\n\n\n \tpublic function registerMediaConversions()\n    {\n        $this->addMediaConversion('thumb')\n             ->setManipulations(['w' => 368, 'h' => 232])\n             ->performOnCollections('images');\n    }\n\n\n\n\n\tpublic function articles()\n    {\n        return $this->hasMany(\\Fully\\Models\\Article::class, 'user_id')->where('status_id', 3)->orderBy('created_at', 'DESC');\n    }\n    public function all_articles()\n    {\n        return $this->hasMany(\\Fully\\Models\\Article::class, 'user_id')->orderBy('created_at', 'DESC');\n    }\n    public function latest_articles()\n    {\n        return $this->hasMany(\\Fully\\Models\\Article::class, 'user_id')->where('status_id', 3)->orderBy('created_at', 'DESC')->take(5);\n    }\n\n\n\tpublic static function edit($user_id, $name, $surname, $username, $email, $first_name, $last_name)\n    {\n        $user = static::find($user_id);\n        $user->first_name = $first_name;\n        $user->last_name = $last_name;\n        $user->surname = $surname;\n        $user->username = $username;\n        $user->email = $email;\n        return $user;\n    }\n\n\n\n}\n",
+			"file": "resources/views/backend/user/create.blade.php",
+			"settings":
+			{
+				"buffer_size": 3790,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Admin/UserController.php",
+			"settings":
+			{
+				"buffer_size": 6016,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "app/Models/User.php",
-			"file_size": 1851,
-			"file_write_time": 131117950802730076,
 			"settings":
 			{
-				"buffer_size": 1786,
+				"buffer_size": 304,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/G/[affordable]/[code]/reviews/Products.blade.php",
+			"file": "app/Models/User2.php",
 			"settings":
 			{
-				"buffer_size": 977,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/G/A_LOCAL/bbb/dropzone/resources/views/frontend/shop/partials/layout/product/reviews.blade.php",
-			"settings":
-			{
-				"buffer_size": 5386,
+				"buffer_size": 2877,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<table class=\"table table-striped table-bordered\">\n    <tbody>\n        <tr>\n            <td>Size</td>\n            <td>Small, Medium &amp; Large</td>\n        </tr>\n        <tr>\n            <td>Color</td>\n            <td>Pink &amp; White</td>\n        </tr>\n        <tr>\n            <td>Waist</td>\n            <td>26 cm</td>\n        </tr>\n        <tr>\n            <td>Length</td>\n            <td>40 cm</td>\n        </tr>\n        <tr>\n            <td>Chest</td>\n            <td>33 inches</td>\n        </tr>\n        <tr>\n            <td>Fabric</td>\n            <td>Cotton, Silk &amp; Synthetic</td>\n        </tr>\n        <tr>\n            <td>Warranty</td>\n            <td>3 Months</td>\n        </tr>\n    </tbody>\n</table>",
+			"file": "app/Http/routes.php",
 			"settings":
 			{
-				"buffer_size": 716,
+				"buffer_size": 13393,
 				"line_ending": "Windows"
 			}
 		},
@@ -50,70 +59,8 @@
 			"file": "resources/views/backend/layout/layout.blade.php",
 			"settings":
 			{
-				"buffer_size": 9131,
+				"buffer_size": 9344,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<?php\n\nnamespace Fully\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Model;\nuse Cviebrock\\EloquentSluggable\\SluggableTrait;\nuse Cviebrock\\EloquentSluggable\\SluggableInterface;\nuse Fully\\Interfaces\\ModelInterface as ModelInterface;\nuse Spatie\\MediaLibrary\\HasMedia\\Interfaces\\HasMediaConversions;\nuse Spatie\\MediaLibrary\\HasMedia\\HasMediaTrait;\n\n\n/**\n * Class News.\n *\n * @author Phillip Madsen <contact@affordableprogrammer.com>\n */\nclass News extends BaseModel implements ModelInterface, SluggableInterface, HasMediaConversions\n{\n    use HasMediaTrait;\n\n    public function registerMediaConversions()\n    {\n        $this->addMediaConversion('thumb')\n             ->setManipulations(['w' => 368, 'h' => 232])\n             ->performOnCollections('images');\n    }\n\n    // $newsItem = News::find(1);\n\t// $newsItem->addMedia($pathToFile)->toCollection('images');\n\n    use SluggableTrait;\n\n    public $table = 'news';\n    public $fillable = ['title', 'content', 'datetime', 'is_published'];\n    protected $appends = ['url'];\n\n    protected $sluggable = array(\n        'build_from' => 'title',\n        'save_to' => 'slug',\n    );\n\n    public function setUrlAttribute($value)\n    {\n        $this->attributes['url'] = $value;\n    }\n\n    public function getUrlAttribute()\n    {\n        return getLang().'/news/'.$this->attributes['slug'];\n    }\n\n \tpublic function addMedia($file);\n\n \tpublic function addMediaFromUrl(string $url);\n\n \tpublic function addMediaFromRequest($keyNAme);\n\n \tpublic function copyMedia($file);\n\n \tpublic function preservingOriginal();\n\n\n \tpublic function usingName($name);\n\npublic function usingFileName($fileName);\n\npublic function withCustomProperties(array $customProperties);\n\npublic function toMediaLibrary($collectionName = 'default', $diskName = '';\n\n\n}\n",
-			"file": "app/Models/News.php",
-			"file_size": 1390,
-			"file_write_time": 131117847692499556,
-			"settings":
-			{
-				"buffer_size": 1771,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/G/Desktop/laravel-shopping-cart-master/packages/ShoppingCart/Models/Product.php",
-			"settings":
-			{
-				"buffer_size": 4235,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Providers/RouteServiceProvider.php",
-			"settings":
-			{
-				"buffer_size": 1000,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<?php\n\n/*\n|--------------------------------------------------------------------------\n| Frontend Routes\n|--------------------------------------------------------------------------\n*/\n\n$languages = LaravelLocalization::getSupportedLocales();\nforeach ($languages as $language => $values) {\n    $supportedLocales[] = $language;\n}\n\n$locale = Request::segment(1);\nif (in_array($locale, $supportedLocales)) {\n    LaravelLocalization::setLocale($locale);\n    App::setLocale($locale);\n}\n\nRoute::get('/', function () {\n\n    return Redirect::to(LaravelLocalization::getCurrentLocale(), 302);\n});\n\nRoute::group(array('prefix' => LaravelLocalization::getCurrentLocale(), 'before' => array('localization', 'before')), function () {\n\n    Session::put('my.locale', LaravelLocalization::getCurrentLocale());\n\n    // frontend dashboard\n    Route::get('/', ['as' => 'dashboard', 'uses' => 'HomeController@index']);\n\n    // article\n    Route::get('/article', array('as' => 'dashboard.article', 'uses' => 'ArticleController@index'));\n    Route::get('/article/{slug}', array('as' => 'dashboard.article.show', 'uses' => 'ArticleController@show'));\n\n    // news\n    Route::get('/news', array('as' => 'dashboard.news', 'uses' => 'NewsController@index'));\n    Route::get('/news/{slug}', array('as' => 'dashboard.news.show', 'uses' => 'NewsController@show'));\n\n    // tags\n    Route::get('/tag/{slug}', array('as' => 'dashboard.tag', 'uses' => 'TagController@index'));\n\n    // categories\n    Route::get('/category/{slug}', array('as' => 'dashboard.category', 'uses' => 'CategoryController@index'));\n\n    // page\n    Route::get('/page', array('as' => 'dashboard.page', 'uses' => 'PageController@index'));\n    Route::get('/page/{slug}', array('as' => 'dashboard.page.show', 'uses' => 'PageController@show'));\n\n    // photo gallery\n    Route::get('/photo-gallery/{slug}', array('as' => 'dashboard.photo_gallery.show',\n                                              'uses' => 'PhotoGalleryController@show', ));\n\n    // video\n    Route::get('/video', array('as' => 'dashboard.video', 'uses' => 'VideoController@index'));\n    Route::get('/video/{slug}', array('as' => 'dashboard.video.show', 'uses' => 'VideoController@show'));\n\n    // projects\n    Route::get('/project', array('as' => 'dashboard.project', 'uses' => 'ProjectController@index'));\n    Route::get('/project/{slug}', array('as' => 'dashboard.project.show', 'uses' => 'ProjectController@show'));\n\n    // contact\n    Route::get('/contact', array('as' => 'dashboard.contact', 'uses' => 'FormPostController@getContact'));\n\n    // faq\n    Route::get('/faq', array('as' => 'dashboard.faq', 'uses' => 'FaqController@show'));\n\n    // rss\n    Route::get('/rss', array('as' => 'rss', 'uses' => 'RssController@index'));\n\n    // search\n    Route::get('/search', ['as' => 'admin.search', 'uses' => 'SearchController@index']);\n\n    // language\n    // Route::get('/set-locale/{language}', array('as' => 'language.set', 'uses' => 'LanguageController@setLocale'));\n\n    // maillist\n    Route::get('/save-maillist', array('as' => 'frontend.maillist', 'uses' => 'MaillistController@getMaillist'));\n    Route::post('/save-maillist', array('as' => 'frontend.maillist.post', 'uses' => 'MaillistController@postMaillist'));\n});\n\n/*\n|--------------------------------------------------------------------------\n| Backend Routes\n|--------------------------------------------------------------------------\n*/\n\nRoute::group(array('prefix' => LaravelLocalization::getCurrentLocale()), function () {\n\n    Route::group(array('prefix' => '/admin',\n                       'namespace' => 'Admin',\n                       'middleware' => ['before', 'sentinel.auth', 'sentinel.permission'] ), function () {\n\n        // admin dashboard\n        Route::get('/', array('as' => 'admin.dashboard', 'uses' => 'DashboardController@index'));\n\n        // user\n        Route::resource('user', 'UserController');\n        Route::get('user/{id}/delete', array('as' => 'admin.user.delete',\n                                             'uses' => 'UserController@confirmDestroy', ))->where('id', '[0-9]+');\n\n        // role\n        Route::resource('role', 'RoleController');\n        Route::get('role/{id}/delete', array('as' => 'admin.role.delete',\n                                              'uses' => 'RoleController@confirmDestroy', ))->where('id', '[0-9]+');\n\n        // blog\n        Route::resource('article', 'ArticleController', array('before' => 'hasAccess:article'));\n        Route::get('article/{id}/delete', array('as' => 'admin.article.delete',\n                                                'uses' => 'ArticleController@confirmDestroy', ))->where('id', '\\d+');\n\n        // news\n        Route::resource('news', 'NewsController', array('before' => 'hasAccess:news'));\n        Route::get('news/{id}/delete', array('as' => 'admin.news.delete',\n                                             'uses' => 'NewsController@confirmDestroy', ))->where('id', '[0-9]+');\n\n        // category\n        Route::resource('category', 'CategoryController', array('before' => 'hasAccess:category'));\n        Route::get('category/{id}/delete', array('as' => 'admin.category.delete',\n                                                 'uses' => 'CategoryController@confirmDestroy', ))->where('id', '[0-9]+');\n\n        // faq\n        Route::resource('faq', 'FaqController', array('before' => 'hasAccess:faq'));\n        Route::get('faq/{id}/delete', array('as' => 'admin.faq.delete',\n                                            'uses' => 'FaqController@confirmDestroy', ))->where('id', '[0-9]+');\n\n        // project\n        Route::resource('project', 'ProjectController');\n        Route::get('project/{id}/delete', array('as' => 'admin.project.delete',\n                                                'uses' => 'ProjectController@confirmDestroy', ))->where('id', '[0-9]+');\n\n        // page\n        Route::resource('page', 'PageController');\n        Route::get('page/{id}/delete', array('as' => 'admin.page.delete',\n                                             'uses' => 'PageController@confirmDestroy', ))->where('id', '[0-9]+');\n\n        // photo gallery\n        Route::resource('photo-gallery', 'PhotoGalleryController');\n        Route::get('photo-gallery/{id}/delete', array('as' => 'admin.photo-gallery.delete',\n                                                      'uses' => 'PhotoGalleryController@confirmDestroy', ))->where('id', '[0-9]+');\n\n        // video\n        Route::resource('video', 'VideoController');\n        Route::get('video/{id}/delete', array('as' => 'admin.video.delete',\n                                              'uses' => 'VideoController@confirmDestroy', ))->where('id', '[0-9]+');\n        Route::post('/video/get-video-detail', array('as' => 'admin.video.detail',\n                                                     'uses' => 'VideoController@getVideoDetail', ))->where('id', '[0-9]+');\n\n        // ajax - blog\n        Route::post('article/{id}/toggle-publish', array('as' => 'admin.article.toggle-publish',\n                                                         'uses' => 'ArticleController@togglePublish', ))->where('id', '[0-9]+');\n\n        // ajax - news\n        Route::post('news/{id}/toggle-publish', array('as' => 'admin.news.toggle-publish',\n                                                      'uses' => 'NewsController@togglePublish', ))->where('id', '[0-9]+');\n\n        // ajax - photo gallery\n        Route::post('photo-gallery/{id}/toggle-publish', array('as' => 'admin.photo_gallery.toggle-publish',\n                                                               'uses' => 'PhotoGalleryController@togglePublish', ))->where('id', '[0-9]+');\n        Route::post('photo-gallery/{id}/toggle-menu', array('as' => 'admin.photo_gallery.toggle-menu',\n                                                            'uses' => 'PhotoGalleryController@toggleMenu', ))->where('id', '[0-9]+');\n\n        // ajax - page\n        Route::post('page/{id}/toggle-publish', array('as' => 'admin.page.toggle-publish',\n                                                      'uses' => 'PageController@togglePublish', ))->where('id', '[0-9]+');\n        Route::post('page/{id}/toggle-menu', array('as' => 'admin.page.toggle-menu',\n                                                   'uses' => 'PageController@toggleMenu', ))->where('id', '[0-9]+');\n\n        // ajax - form post\n        Route::post('form-post/{id}/toggle-answer', array('as' => 'admin.form-post.toggle-answer',\n                                                          'uses' => 'FormPostController@toggleAnswer', ))->where('id', '[0-9]+');\n\n        // file upload photo gallery\n        Route::post('/photo-gallery/upload/{id}', array('as' => 'admin.photo.gallery.upload.image',\n                                                        'uses' => 'PhotoGalleryController@upload', ))->where('id', '[0-9]+');\n        Route::post('/photo-gallery-delete-image', array('as' => 'admin.photo.gallery.delete.image',\n                                                         'uses' => 'PhotoGalleryController@deleteImage', ));\n\n        // settings\n        Route::get('/settings', array('as' => 'admin.settings', 'uses' => 'SettingController@index'));\n        Route::post('/settings', array('as' => 'admin.settings.save',\n                                       'uses' => 'SettingController@save', ), array('before' => 'csrf'));\n\n        // form post\n        Route::resource('form-post', 'FormPostController', array('only' => array('index', 'show', 'destroy')));\n        Route::get('form-post/{id}/delete', array('as' => 'admin.form-post.delete',\n                                                  'uses' => 'FormPostController@confirmDestroy', ))->where('id', '[0-9]+');\n\n        // slider\n        Route::get('/slider', array(\n            'as' => 'admin.slider',\n            function () {\n\n                return View::make('backend/slider/index');\n            }, ));\n\n        // slider\n        Route::resource('slider', 'SliderController');\n        Route::get('slider/{id}/delete', array('as' => 'admin.slider.delete',\n                                               'uses' => 'SliderController@confirmDestroy', ))->where('id', '[0-9]+');\n\n        // file upload slider\n        Route::post('/slider/upload/{id}', array('as' => 'admin.slider.upload.image',\n                                                 'uses' => 'SliderController@upload', ))->where('id', '[0-9]+');\n        Route::post('/slider-delete-image', array('as' => 'admin.slider.delete.image',\n                                                  'uses' => 'SliderController@deleteImage', ));\n\n        // menu-managment\n        Route::resource('menu', 'MenuController');\n        Route::post('menu/save', array('as' => 'admin.menu.save', 'uses' => 'MenuController@save'));\n        Route::get('menu/{id}/delete', array('as' => 'admin.menu.delete',\n                                             'uses' => 'MenuController@confirmDestroy', ))->where('id', '[0-9]+');\n        Route::post('menu/{id}/toggle-publish', array('as' => 'admin.menu.toggle-publish',\n                                                      'uses' => 'MenuController@togglePublish', ))->where('id', '[0-9]+');\n\n        // log\n        Route::get('logs', '\\Rap2hpoutre\\LaravelLogViewer\\LogViewerController@index');\n\n        // language\n        Route::get('language/set-locale/{language}', array('as' => 'admin.language.set',\n                                                           'uses' => 'LanguageController@setLocale', ));\n    });\n});\n\nRoute::post('/contact', array('as' => 'dashboard.contact.post',\n                              'uses' => 'FormPostController@postContact', ), array('before' => 'csrf'));\n\n// filemanager\nRoute::get('filemanager/show', function () {\n\n    return View::make('backend/plugins/filemanager');\n})->before('sentinel.auth');\n\n// login\nRoute::get('/admin/login', array(\n    'as' => 'admin.login',\n    function () {\n\n        return View::make('backend/auth/login');\n    }, ));\n\nRoute::group(array('namespace' => 'Admin'), function () {\n\n    // admin auth\n    Route::get('admin/logout', array('as' => 'admin.logout', 'uses' => 'AuthController@getLogout'));\n    Route::get('admin/login', array('as' => 'admin.login', 'uses' => 'AuthController@getLogin'));\n    Route::post('admin/login', array('as' => 'admin.login.post', 'uses' => 'AuthController@postLogin'));\n\n    // admin password reminder\n    Route::get('admin/forgot-password', array('as' => 'admin.forgot.password',\n                                              'uses' => 'AuthController@getForgotPassword', ));\n    Route::post('admin/forgot-password', array('as' => 'admin.forgot.password.post',\n                                               'uses' => 'AuthController@postForgotPassword', ));\n\n    Route::get('admin/{id}/reset/{code}', array('as' => 'admin.reset.password',\n                                                'uses' => 'AuthController@getResetPassword', ))->where('id', '[0-9]+');\n    Route::post('admin/reset-password', array('as' => 'admin.reset.password.post',\n                                              'uses' => 'AuthController@postResetPassword', ));\n});\n\n/*\n|--------------------------------------------------------------------------\n| General Routes\n|--------------------------------------------------------------------------\n*/\n\n// error\n\n// 404 page not found\n\n\n\n// Route::get('image/{path}', function (League\\Glide\\Server $server, Illuminate\\Http\\Request $request, $path) {\n\n//     $server->outputImage($request);\n\n// })->where('path', '.*');",
-			"file": "app/Http/routes.php",
-			"file_size": 13594,
-			"file_write_time": 131117754247148461,
-			"settings":
-			{
-				"buffer_size": 13508,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/G/Desktop/laravel-shopping-cart-master/app/Http/routes.php",
-			"settings":
-			{
-				"buffer_size": 2218,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/Admin/UserController.php",
-			"settings":
-			{
-				"buffer_size": 5977,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "vendor/cartalyst/sentinel/src/Users/EloquentUser.php",
-			"settings":
-			{
-				"buffer_size": 9995,
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -235,18 +182,36 @@
 	[
 		"/G/A_LOCAL/bbb/upload",
 		"/G/A_LOCAL/bbb/upload/app",
-		"/G/A_LOCAL/bbb/upload/app/Http",
-		"/G/A_LOCAL/bbb/upload/app/Models",
-		"/G/A_LOCAL/bbb/upload/app/Providers",
-		"/G/A_LOCAL/bbb/upload/config",
+		"/G/A_LOCAL/bbb/upload/app/Http/Controllers",
+		"/G/A_LOCAL/bbb/upload/app/Http/Controllers/Admin",
+		"/G/A_LOCAL/bbb/upload/public",
+		"/G/A_LOCAL/bbb/upload/public/uploads",
+		"/G/A_LOCAL/bbb/upload/public/uploads/slider",
 		"/G/A_LOCAL/bbb/upload/resources",
 		"/G/A_LOCAL/bbb/upload/resources/views",
-		"/G/A_LOCAL/bbb/upload/resources/views/backend",
 		"/G/A_LOCAL/bbb/upload/resources/views/backend/layout",
 		"/G/A_LOCAL/bbb/upload/resources/views/backend/user"
 	],
 	"file_history":
 	[
+		"/G/A_LOCAL/bbb/upload/app/Http/Controllers/Admin/UserController2.php",
+		"/G/A_LOCAL/bbb/upload/app/Models/User2.php",
+		"/G/A_LOCAL/bbb/upload/app/Models/User.php",
+		"/G/A_LOCAL/bbb/staged.grace/app/Http/new_routes.php",
+		"/G/A_LOCAL/bbb/upload/app/Models/Page.php",
+		"/G/A_LOCAL/bbb/upload/app/Models/Article.php",
+		"/G/A_LOCAL/bbb/upload/app/Models/Category.php",
+		"/G/[affordable]/[code]/reviews/Products.blade.php",
+		"/G/A_LOCAL/bbb/dropzone/resources/views/frontend/shop/partials/layout/product/reviews.blade.php",
+		"/G/A_LOCAL/bbb/upload/resources/views/backend/layout/layout.blade.php",
+		"/G/Desktop/laravel-shopping-cart-master/packages/ShoppingCart/Models/Product.php",
+		"/G/A_LOCAL/bbb/upload/app/Helper/helpers.php",
+		"/G/A_LOCAL/bbb/upload/app/Http/routes.php",
+		"/G/A_LOCAL/bbb/upload/database/migrations/2016_06_02_231228_create_products_table.php",
+		"/G/Desktop/laravel-shopping-cart-master/app/Http/routes.php",
+		"/G/A_LOCAL/bbb/upload/vendor/cartalyst/sentinel/src/Users/EloquentUser.php",
+		"/G/A_LOCAL/bbb/upload/vendor/spatie/laravel-medialibrary/src/HasMedia/HasMediaTrait.php",
+		"/G/A_LOCAL/bbb/upload/app/Models/News.php",
 		"/G/A_LOCAL/bbb/staged.grace/config/app.php",
 		"/G/A_LOCAL/bbb/staged.grace/database/migrations/2016_06_12_195301_create_my_images_table.php",
 		"/G/A_LOCAL/bbb/staged.grace/database/migrations/2016_06_12_195301_create_images_paths_table.php",
@@ -276,7 +241,6 @@
 		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/G/A_LOCAL/bbb/uploadmanager/app/Http/Controllers/admin/UploadController.php",
 		"/G/A_LOCAL/bbb/staged.grace/composer.json",
-		"/G/A_LOCAL/bbb/staged.grace/app/Http/new_routes.php",
 		"/G/A_LOCAL/bbb/uploadmanager/app/Http/routes.php",
 		"/G/Desktop/TEMPLATES/temprar/Rar$DRa0.706/Laravel Blade Highlighter/Comments.tmPreferences",
 		"/G/Desktop/TEMPLATES/temprar/Rar$DRa0.561/Laravel Blade Highlighter/laravel-blade.tmLanguage",
@@ -357,24 +321,7 @@
 		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/staged-grace.sublime-project",
 		"/G/A_LOCAL/bbb/staged.grace/docs/sublime.log",
 		"/G/A_LOCAL/bbb/staged.grace/database/migrations/2016_06_12_195301_create_grace_image_paths_table.php",
-		"/G/A_LOCAL/bbb/staged.grace/2016_06_27_141712_add_to.php",
-		"/G/A_LOCAL/bbb/staged.grace/storage/logs/laravel-2016-06-28.log",
-		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/phpcs.sublime-settings",
-		"/G/A_LOCAL/bbb/staged.grace/database/migrations/2016_06_21_221520_create_product_features_table.php",
-		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/PHPTools.sublime-settings",
-		"/G/A_LOCAL/bbb/staged.grace/database/migrations/2016_06_21_221520_create_product_features_table.php;",
-		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/PHPTools/PHPTools.sublime-settings",
-		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/Phpcs/phpcs.sublime-settings",
-		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/AutoBackups (Windows).sublime-settings",
-		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/sublime_logging_control/logging_control.sublime-settings",
-		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/SublimeLog/SublimeLog.sublime-settings",
-		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLog.sublime-settings",
-		"/G/A_LOCAL/bbb/staged.grace/docs/STAGED.TODO",
-		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/User/PlainTasks.sublime-settings",
-		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/PlainTasks (Windows).sublime-settings",
-		"/G/A_LOCAL/bbb/staged.grace/quilting seo stuff.html",
-		"/C/Users/sandbox/AppData/Roaming/Sublime Text 3/Packages/orgmode/orgmode.sublime-settings",
-		"/G/Desktop/markdowntest.md"
+		"/G/A_LOCAL/bbb/staged.grace/2016_06_27_141712_add_to.php"
 	],
 	"find":
 	{
@@ -439,24 +386,24 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/Models/User.php",
+					"file": "resources/views/backend/user/create.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1786,
+						"buffer_size": 3790,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1684,
-								1684
+								3768,
+								3768
 							]
 						],
 						"settings":
@@ -465,128 +412,176 @@
 							"editorconfig": true,
 							"ensure_newline_at_eof_on_save": true,
 							"is_xml": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"syntax": "Packages/User/laravel-blade.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": false,
 							"trim_trailing_white_space_on_save": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 581.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/G/[affordable]/[code]/reviews/Products.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 977,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								471,
-								471
-							]
-						],
-						"settings":
-						{
-							"is_xml": false,
-							"syntax": "Packages/User/laravel-blade.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 1667.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/G/A_LOCAL/bbb/dropzone/resources/views/frontend/shop/partials/layout/product/reviews.blade.php",
+					"buffer": 1,
+					"file": "app/Http/Controllers/Admin/UserController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5386,
+						"buffer_size": 6016,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2278,
-								2278
-							]
-						],
-						"settings":
-						{
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"is_xml": false,
-							"syntax": "Packages/User/laravel-blade.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": false,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 378.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 716,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								716,
-								716
+								2552,
+								2552
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"default_dir": "G:\\A_LOCAL\\bbb\\upload",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
 							"is_xml": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1526.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "resources/views/backend/layout/layout.blade.php",
+					"buffer": 2,
+					"file": "app/Models/User.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9131,
+						"buffer_size": 304,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5331,
-								5331
+								230,
+								230
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"is_xml": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"file": "public/uploads/slider/slider_9.jpg",
+					"semi_transient": true,
+					"stack_index": 0,
+					"type": "image"
+				},
+				{
+					"buffer": 3,
+					"file": "app/Models/User2.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2877,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2877,
+								2877
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"is_xml": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1337.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/Http/routes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4952,
+								4952
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"is_xml": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 2331.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "resources/views/backend/layout/layout.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9344,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9186,
+								9186
 							]
 						],
 						"settings":
@@ -600,247 +595,11 @@
 							"translate_tabs_to_spaces": false,
 							"trim_trailing_white_space_on_save": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 1026.0,
+						"translation.x": 0.0,
+						"translation.y": 2349.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/Models/News.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1771,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1766,
-								1766
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"is_xml": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": false,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 693.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/G/Desktop/laravel-shopping-cart-master/packages/ShoppingCart/Models/Product.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4235,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4235,
-								4235
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"is_xml": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3024.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/Providers/RouteServiceProvider.php",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1000,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"is_xml": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": false,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/Http/routes.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13508,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13508,
-								13331
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"is_xml": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": false,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 5397.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "/G/Desktop/laravel-shopping-cart-master/app/Http/routes.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2218,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"is_xml": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 504.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "app/Http/Controllers/Admin/UserController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5977,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								924,
-								924
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"is_xml": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": false,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 378.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "vendor/cartalyst/sentinel/src/Users/EloquentUser.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9995,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								952,
-								952
-							]
-						],
-						"settings":
-						{
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"is_xml": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": false,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 9058.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -877,6 +636,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 116.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0

@@ -9,8 +9,18 @@ use Cartalyst\Sentinel\Users\EloquentUser;
 class User extends EloquentUser
 {
 	protected $fillable = ['path'];
+
+
+
+
+
+
+
+
+// public function photos()
+// {
+// 	return $this->belongsTo(Fully\Models\Product::class)
+// }
+
+
 }
-
-
-
-// https://laracasts.com/series/build-project-flyer-with-me/episodes/11

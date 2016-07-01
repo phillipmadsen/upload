@@ -101,7 +101,11 @@
 
 <br style="clear:both" />
 
-	{!! Form::open(['action' => '\Fully\Http\Controllers\Admin\UserController@addPhoto', 'class' => 'dropzone', 'method' => 'post', 'files' => 'true']) !!}
+	{!! Form::open(['action' => '\Fully\Http\Controllers\Admin\UserController@addPhoto',
+					'class' => 'dropzone',
+					'method' => 'post',
+					'files' => 'true'
+					]) !!}
 
 
 	{{ csrf_field() }}

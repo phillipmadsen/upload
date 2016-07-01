@@ -12,7 +12,7 @@ use Fully\Http\Controllers\Controller;
 /**
  * Class UserController.
  *
- * @author Sefa Karagöz <karagozsefa@gmail.com>
+ * @author Phillip Madsen <contact@affordableprogrammer.com>
  */
 class UserController extends Controller
 {
@@ -100,35 +100,22 @@ class UserController extends Controller
 
 		$name = time() . $file->getClientOriginalName();
 
-		$file->move('products/', $name);
+		$file->move('users/', $name);
 
 		$user = Sentinel::findUserById($id);
 
 
-		$userImage->photos()->create(['path' => "/flyers/photos/{$name}"]);
+		$user->photos()->create(['path' => "/user/{$name}"]);
 
 		return 'done';
 
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		// $slug = $file->getClientOriginalName();
+  //       $slug = pathinfo($filename, 0, strrpos($filename, PATHINFO_FILENAME));
+  //       $destinationPath = public_path() . '/uploads/products/'. $slug;
+  //       if(!file_exists($destinationPath)) File::makeDirectory($destinationPath);
 
     /**
      * Show the form for editing the specified resource.

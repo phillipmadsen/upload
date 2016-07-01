@@ -1,38 +1,50 @@
 {
-    "build_systems": [{
-        "shell_cmd": "php-cs-fixer fix \"$file\" --level=psr2",
-        "working_dir": "${project_path:${folder}}"
-    }],
-    "folders": [{
-    	"name": "uploader dev",
-        "path": "G:\\A_LOCAL\\bbb\\upload"
-    },{
-		"name": "Documentation",
-		 "path": "G:\\A_LOCAL\\bbb\\upload\\docs"
-    }],
-    "path_mapping": {
-        "/home/vagrant/bbb/upload": "G:/A_LOCAL/bbb/uplaod"
-    },
-    "url": "http://upload/",
-    "color_scheme": "Packages/Theme - Windows 10/Widget - Windows 10.tmTheme",
-    "exclude_git_folder": true,
-    "exclude_hidden_files": true,
-    "exclude_hidden_folders": true,
-    "indent_with_tabs": true,
-    "font_face": "Consolas",
-    "font_options": ["subpixel_antialias"],
-    "font_size": 12,
-    "bold_folder_labels": true,
-    "ignore_sublime_settings": true,
-    "animation_enabled": false,
-    "drag_text": false,
-    "copy_with_empty_selection": true,
-    "auto_close_tags": true,
-    "match_brackets": true,
-    "match_brackets_content": true,
-    "match_brackets_square": true,
-    "match_brackets_braces": true,
-    "match_brackets_angle": false,
-    "match_tags": true,
-    "match_selection": true,
+	"animation_enabled": false,
+	"auto_close_tags": true,
+	"bold_folder_labels": true,
+	"build_systems":
+	[
+		{
+			"shell_cmd": "php-cs-fixer fix \"$file\" --level=psr2",
+			"working_dir": "${project_path:${folder}}"
+		}
+	],
+	"color_scheme": "Packages/Theme - Windows 10/Widget - Windows 10.tmTheme",
+	"copy_with_empty_selection": true,
+	"debug": true,
+	"drag_text": false,
+	"exclude_git_folder": true,
+	"exclude_hidden_files": true,
+	"exclude_hidden_folders": true,
+	"folders":
+	[
+		{
+			"name": "uploader dev",
+			"path": "."
+		},
+		{
+			"name": "Documentation",
+			"path": "docs"
+		},
+		{
+			"path": "storage\\logs"
+		}
+	],
+	"font_face": "Consolas",
+	"font_size": 12,
+	"ignore_sublime_settings": true,
+	"indent_with_tabs": true,
+	"match_brackets": true,
+	"match_brackets_angle": false,
+	"match_brackets_braces": true,
+	"match_brackets_content": true,
+	"match_brackets_square": true,
+	"match_selection": true,
+	"match_tags": true,
+	"path_mapping":
+	{
+		"/home/vagrant/bbb/upload": "G:/A_LOCAL/bbb/uplaod"
+	},
+	"translate_spaces_to_tabs": true,
+	"url": "http://upload/"
 }

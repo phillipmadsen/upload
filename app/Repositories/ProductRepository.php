@@ -41,18 +41,18 @@ class ProductRepository extends BaseRepository
     }
 
 
-    public function uploadProductImage(UploadedFile $file)
-      {
-        $extension = $file->getClientOriginalExtension();
-        $filename = $file->getClientOriginalName();
-        $slug = $file->getClientOriginalName();
-        $slug = pathinfo($filename, 0, strrpos($filename, PATHINFO_FILENAME));
-        $destinationPath = public_path() . '/uploads/products/'. $slug;
-        if(!file_exists($destinationPath)) File::makeDirectory($destinationPath);
-        //$picture = Str::slug(substr($filename, 0, strrpos($filename, "."))) . '_' . time() . '.' . $extension;
-        $picture = $slug . "." . $extension;
-        return $file->move($destinationPath, $picture);
-      }
+// public function uploadProductImage(UploadedFile $file)
+// {
+// $extension = $file->getClientOriginalExtension();
+// $filename = $file->getClientOriginalName();
+// $slug = $file->getClientOriginalName();
+// $slug = pathinfo($filename, 0, strrpos($filename, PATHINFO_FILENAME));
+// $destinationPath = public_path() . '/uploads/products/'. $slug;
+// if(!file_exists($destinationPath)) File::makeDirectory($destinationPath);
+// //$picture = Str::slug(substr($filename, 0, strrpos($filename, "."))) . '_' . time() . '.' . $extension;
+// $picture = $slug . "." . $extension;
+// return $file->move($destinationPath, $picture);
+// }
 
 
 

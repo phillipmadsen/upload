@@ -11,3 +11,12 @@ abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }
+
+
+class AppBaseController extends BaseController
+{
+    public function sendResponse($result, $message)
+    {
+        return Response::json(ResponseUtil::makeResponse($message, $result));
+    }
+}

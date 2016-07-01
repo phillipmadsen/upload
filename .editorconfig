@@ -18,12 +18,16 @@ indent_size = 2
 [*.{js,json,yml}]
 indent_style = space
 indent_size = 2
+end_of_line = crlf
+indent_style = tab
 
 [*.{css,styl,scss,less,sass}]
 indent_size = 2
 
 [*.php, *.blade.php]
 indent_size = 4
+indent_style = tab
+end_of_line = crlf
 indent_style = tab
 
 [*.rb]

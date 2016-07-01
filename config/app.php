@@ -145,23 +145,35 @@ return [
 		Fully\Providers\FeederServiceProvider::class,
 		Fully\Providers\SearchServiceProvider::class,
 		/*
-		 * 3rd
-		 */
+	 |--------------------------------------------------------------------------
+	 | phillips custom services
+	 |--------------------------------------------------------------------------
+		*/
 		Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
 		Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
 		Barryvdh\Debugbar\ServiceProvider::class,
 		Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
 		DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
-		Laracasts\Flash\FlashServiceProvider::class,
+
 		Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 		Sseffa\VideoApi\VideoApiServiceProvider::class,
-		Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
-		Spatie\DirectoryCleanup\DirectoryCleanupServiceProvider::class,
-		//Spatie\Activitylog\ActivitylogServiceProvider::class,
-		Spatie\Analytics\AnalyticsServiceProvider::class,
-		Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+		//Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
+		//Spatie\DirectoryCleanup\DirectoryCleanupServiceProvider::class,
+		////Spatie\Activitylog\ActivitylogServiceProvider::class,
+		//Spatie\Analytics\AnalyticsServiceProvider::class,
+		//Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+		//Collective\Html\HtmlServiceProvider::class,
+		//Laracasts\Flash\FlashServiceProvider::class,
+		//Prettus\Repository\Providers\RepositoryServiceProvider::class,
+		//\InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
+		//\InfyOm\CoreTemplates\CoreTemplatesServiceProvider::class,
+		//Yajra\Datatables\DatatablesServiceProvider::class,
 
+		//Evercode1\ViewMaker\ViewMakerServiceProvider::class,
+		//Orangehill\Iseed\IseedServiceProvider::class,
+		//Bootstrapper\BootstrapperL5ServiceProvider::class,
+		//Mpociot\LaravelTestFactoryHelper\TestFactoryHelperSer,
 
 	],
 	/*
@@ -212,6 +224,14 @@ return [
 		'View'                => Illuminate\Support\Facades\View::class,
 		'Form'                => Collective\Html\FormFacade::class,
 		'HTML'                => Collective\Html\HtmlFacade::class,
+
+
+		/*
+	  |--------------------------------------------------------------------------
+	  | Facades coding by phillip
+	  |--------------------------------------------------------------------------
+		*/
+
 		'Activation'          => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
 		'Reminder'            => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
 		'Sentinel'            => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
@@ -225,7 +245,11 @@ return [
 		'Search'              => Fully\Search\Facade\Search::class,
 		'Flash'               => Laracasts\Flash\Flash::class,
 		'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
-		'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+		//'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+
+		//'Form'      => Collective\Html\FormFacade::class,
+		//'Html'      => Collective\Html\HtmlFacade::class,
+		//'Flash'     => Laracasts\Flash\Flash::class,
 
 	],
 
